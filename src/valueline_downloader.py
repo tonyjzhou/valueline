@@ -9,7 +9,7 @@ from urllib.request import urlretrieve
 
 
 def all_file_names():
-    return ["f%04d.pdf" % i for i in range(1, 10000)]
+    return ["f%d.pdf" % i for i in range(30000, 40000)]
 
 
 def retrieve(remote_dir, local_dir):
@@ -31,8 +31,8 @@ def retrieve(remote_dir, local_dir):
 def user_input():
     default_remote_dir = "http://www3.valueline.com/dow30/"
     default_local_dir = "/Users/tonyzhou/Google Drive/Investment/Valueline/dow30/"
-    remote_dir = input("Enter remote dir (default '%s'):" % default_remote_dir) or default_remote_dir
-    local_dir = input("Enter local dir (default '%s'):" % default_local_dir) or default_local_dir
+    remote_dir = input("Enter remote dir (default '%s'): " % default_remote_dir) or default_remote_dir
+    local_dir = input("Enter local dir (default '%s'): " % default_local_dir) or default_local_dir
 
     return remote_dir, local_dir
 

@@ -1,6 +1,6 @@
 import unittest
 
-from src.valueline_reader import extract_file_name
+from src.valueline_renamer import extract_file_name
 
 
 class ValuelineReaderTestCase(unittest.TestCase):
@@ -24,6 +24,9 @@ class ValuelineReaderTestCase(unittest.TestCase):
 
     def test_extract_file_name7(self):
         self.assertEqual("PNK-FUJIY_FUJIFILMHLDGS(ADR).pdf", extract_file_name('../resources/f3695.pdf'))
+
+    def test_extract_file_name8(self):
+        self.assertEqual("NYSE-PSX_PHILLIPS66.pdf", extract_file_name('../resources/f19788.pdf'))
 
 
 if __name__ == '__main__':

@@ -2,6 +2,7 @@
 import glob
 import os
 import re
+from multiprocessing.pool import Pool
 
 import PyPDF2
 
@@ -27,19 +28,25 @@ def search_result(content):
     exchanges = ['NYSE', 'NDQ', 'TSE', 'ASE', 'PNK']
 
     for e in exchanges:
-        p = re.compile('.*\d+(\D+)(%s-\D+).*' % e)
+        p = re.compile('.*\d+(\D+.*)(%s-\D+).*' % e)
         result = p.search(content)
         if result:
             return result
 
 
 def main():
-    # print(extract_file_name('../resources/f3695.pdf'))
-    for file_name in glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700/*.pdf"):
-        new_file_name = extract_file_name(file_name)
-        print("Renaming '%s' to '%s'" % (file_name, new_file_name))
-        os.rename(file_name, new_file_name)
-        print()
+    # print(extract_file_name('../resources/f19788.pdf'))
+    # for file_name in glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700-4/*.pdf"):
+    #     print(file_name)
+    #     rename_file(file_name)
+    Pool(16).map(rename_file, glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700-4/*.pdf"))
+
+
+def rename_file(file_name):
+    new_file_name = extract_file_name(file_name)
+    print("Renaming '%s' to '%s'" % (file_name, new_file_name))
+    os.rename(file_name, new_file_name)
+    print()
 
 
 if __name__ == "__main__":
