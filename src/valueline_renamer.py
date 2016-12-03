@@ -25,10 +25,10 @@ def extract_file_name(pdf_name):
 
 
 def search_result(content):
-    exchanges = ['NYSE', 'NDQ', 'TSE', 'ASE', 'PNK']
+    exchanges = ['NDQ', 'NYSE', 'TSE', 'ASE', 'PNK']
 
     for e in exchanges:
-        p = re.compile('.*\d+(\D+.*)(%s-\D+).*' % e)
+        p = re.compile('^.*\d+(\D+.*)(%s-\D+).*' % e)
         result = p.search(content)
         if result:
             return result
