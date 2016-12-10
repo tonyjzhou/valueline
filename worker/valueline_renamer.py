@@ -35,7 +35,7 @@ def search_result(content):
 
 
 def main():
-    # print(extract_file_name('../resources/f19788.pdf'))
+    # print(extract_file_name('../resource/f19788.pdf'))
     # for file_name in glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700-4/*.pdf"):
     #     print(file_name)
     #     rename_file(file_name)
