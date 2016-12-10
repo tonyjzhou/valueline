@@ -1,6 +1,6 @@
 import unittest
 
-from src.valueline_renamer import extract_file_name
+from worker.valueline_renamer import extract_file_name
 
 
 class ValuelineReaderTestCase(unittest.TestCase):
