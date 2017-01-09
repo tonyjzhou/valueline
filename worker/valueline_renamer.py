@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import glob
+import multiprocessing
 import os
 import re
 from multiprocessing.pool import Pool
@@ -39,7 +40,8 @@ def main():
     # for file_name in glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700-4/*.pdf"):
     #     print(file_name)
     #     rename_file(file_name)
-    Pool(16).map(rename_file, glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700-4/*.pdf"))
+    pool_size = multiprocessing.cpu_count() * 2
+    Pool(pool_size).map(rename_file, glob.glob("/Users/tonyzhou/Google Drive/Investment/Valueline/stk1700-4/*.pdf"))
 
 
 def rename_file(file_name):

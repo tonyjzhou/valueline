@@ -39,16 +39,16 @@ def user_input():
 
 def main():
     remote_dir, local_dir = user_input()
-    size = multiprocessing.cpu_count() * 2
+    pool_size = multiprocessing.cpu_count() * 2
 
-    print("Going to download all files in '%s' to '%s' with %d threads" % (remote_dir, local_dir, size))
+    print("Going to download all files in '%s' to '%s' with %d threads" % (remote_dir, local_dir, pool_size))
     input("Press Enter to continue...")
 
     start = time.time()
-    Pool(size).map(retrieve(remote_dir, local_dir), all_file_names())
+    Pool(pool_size).map(retrieve(remote_dir, local_dir), all_file_names())
     end = time.time()
 
-    print("Total threads = ", size)
+    print("Total threads = ", pool_size)
     print("Total time = %f seconds" % (end - start))
 
 
